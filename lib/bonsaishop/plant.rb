@@ -1,0 +1,3 @@
+class Bonsaishop::Plant
+
+end

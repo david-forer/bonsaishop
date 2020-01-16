@@ -1,0 +1,4 @@
+class Bonsaishop::Scraper
+
+    
+end
