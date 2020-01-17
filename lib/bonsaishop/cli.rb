@@ -5,11 +5,12 @@ class Bonsaishop::CLI
         get_bonsai_plants
         list_bonsais
         get_user_bonsai
+        # show_bonsais_for
         
     end
 
     def get_bonsai_plants 
-        @bonsai = Bonsaishop::Bonsai.all
+        @bonsais = Bonsaishop::Bonsai.all
     end
 
     # def get_type_of_plants
@@ -19,7 +20,7 @@ class Bonsaishop::CLI
 
     def list_bonsais
         puts "\nPlease choose a type of Bonsai Plant to look at:\n"
-        @bonsai.each.with_index(1) do |bonsai, index| 
+        @bonsais.each.with_index(1) do |bonsai, index| 
           puts  "#{index}. #{bonsai.name}"
         end
         puts "\n____________________\n"
@@ -27,9 +28,8 @@ class Bonsaishop::CLI
 
     def get_user_bonsai
         chosen_bonsai = gets.strip.to_i
-        show_bonsais_for(chosen_bonsai) 
-        if valid_input(chosen_bonsai, @bonsais)
-        end
+        show_bonsais_for(chosen_bonsai) if valid_input(chosen_bonsai, @bonsais)
+        
     end
 
     def valid_input(input, data)
@@ -37,8 +37,14 @@ class Bonsaishop::CLI
     end 
 
     def show_bonsais_for(chosen_bonsai)
-        bonsai = @bonsais[chosen_bonsai - 1]
-        puts = "Here are the #{bonsais}"
-        
+        bonsai = @bonsais[chosen_bonsai -1]
+        bonsai.get_bonsaiplants
+        puts "Here are the #{bonsai.name}"
+        bonsai.bonsaiplants.each.with_index(1) do |bonsaiplant, int|
+            puts "#{int}. #{bonsaiplant.name}"
+        end
     end
 end
+
+
+# bonsaiplants = bonsai.bonsaiplants
