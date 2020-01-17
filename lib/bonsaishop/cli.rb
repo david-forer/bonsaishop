@@ -41,8 +41,23 @@ class Bonsaishop::CLI
         bonsai.get_bonsaiplants
         puts "Here are the #{bonsai.name}"
         bonsai.bonsaiplants.each.with_index(1) do |bonsaiplant, int|
-            puts "#{int}. #{bonsaiplant.name}"
+            puts "#{int}. #{bonsaiplant.title} "
         end
+        get_user_bonsai_tree(bonsai)
+        
+    end
+
+    def get_user_bonsai_tree(bonsai)
+        puts "Please choose a tree(number) to see more details."
+        input = gets.strip
+        bonsaiplant = bonsai.bonsaiplants[input.to_i - 1]
+        bonsaiplant.get_bonsaiplant_details
+        show_bonsaiplant_details(bonsaiplant)
+    end
+
+    def show_bonsaiplant_details(bonsaiplant)
+        
+        bonsaiplant.bonsaiplant_details.each
     end
 end
 

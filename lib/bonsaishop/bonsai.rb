@@ -1,15 +1,15 @@
 class Bonsaishop::Bonsai
-    attr_accessor :name, :bonsaiplants
+    attr_accessor :name, :bonsaiplants, :url
 
     @@all = []
 
-    def initialize(name) 
+    def initialize(name, url) 
         @name = name
         @bonsaiplants = []
-        # @url = url
+        @url = url
         # @description = 
         # @price = 
-
+        
         save
     end
 
