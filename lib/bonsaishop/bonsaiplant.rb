@@ -1,5 +1,5 @@
 class Bonsaishop::Bonsaiplant
-    attr_accessor :price, :page_description, :title, :tree_url
+    attr_accessor :price, :title, :tree_url
 
     @@all = []
 
@@ -8,9 +8,10 @@ class Bonsaishop::Bonsaiplant
         @price = price
         @tree_url = tree_url
         @bonsai = bonsai
-        @bonsaiplant_details = []
+        @bonsaiplant_for = []
 
         add_to_bonsai
+        # get_bonsaiplant_for
         save
     end
 
@@ -23,8 +24,8 @@ class Bonsaishop::Bonsaiplant
         @bonsai.bonsaiplants << self unless @bonsai.bonsaiplants.include?(self)
     end
 
-    def get_bonsaiplant_details 
-        Bonsaishop::Scraper.scrape_bonsaiplant_details(self) if @bonsaiplant_details.empty?
+    def get_bonsaiplant_for 
+        Bonsaishop::Scraper.scrape_bonsaiplant_for(self) if @bonsaiplant_for.empty?
     
     end
 

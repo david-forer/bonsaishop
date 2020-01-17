@@ -29,8 +29,8 @@ class Bonsaishop::Scraper
        
     end
 
-    def self.scrape_bonsaiplant_details(bonsaiplant)
-        
+    def self.scrape_bonsaiplant_for(bonsaiplant)
+    
         url = "#{bonsaiplant.tree_url}"
         doc = Nokogiri::HTML(open(url))
 
@@ -40,7 +40,8 @@ class Bonsaishop::Scraper
             title = final.css("h1.productView-title").text.strip
             price = final.css("span.price.price--withoutTax").text.strip
             description = final.css("div.tab-content p").text.strip
-            reviews = final.css("span.sr-only").text.strip
+            # reviews = final.css("span.sr-only").text.strip
+            Bonsaishop::Bonsaiplant_for.new(title, price, description)
         end
 
     end
