@@ -56,11 +56,21 @@ class Bonsaishop::CLI
         # bonsaiplant.get_bonsaiplant_for
         # binding.pry
         Bonsaishop::Scraper.scrape_description_for(bonsaiplant)
+
+        puts "Here are the bonsai details for #{bonsaiplant.title}:"
         #  binding.pry
         # show_bonsaiplant_details
     end
 
-   
+    # def show_bonsaiplant_details(bonsaiplant)
+
+    #     puts "Here are the bonsai details you are looking for:"
+
+    #     bonsaiplant.each do |p|
+    #         puts "nice One"
+    #     end
+
+    # end
 
     # def show_bonsaiplant_for(bonsaiplant)
     #     # binding.pry

@@ -37,7 +37,7 @@ class Bonsaishop::Scraper
        description = doc.css("div.productDtlPage div.tab-content p").text.strip
         # binding.pry
 
-
+        # Bonsaishop::Bonsaiplant.push(description)
         # puts description
         # description.each do |final|
         #     # title = final.css("h1.productView-title").text.strip
