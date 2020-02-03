@@ -47,24 +47,29 @@ class Bonsaishop::CLI
         
     end
 
-    def get_user_bonsai_tree(bonsai)
+    def get_user_bonsai_tree(bonsai_category)
         puts "Please choose a tree(number) to see more details."
         input = gets.strip.strip.to_i
         # binding.pry
         #bonsaiplant = Bonsaishop::Bonsaiplant.all
-        bonsaiplant = bonsai.bonsaiplants[input.to_i - 1]
+        bonsaiplant = bonsai_category.bonsaiplants[input.to_i - 1]
         # bonsaiplant.get_bonsaiplant_for
         # binding.pry
-        show_bonsaiplant_for(bonsaiplant)
+        Bonsaishop::Scraper.scrape_description_for(bonsaiplant)
+        #  binding.pry
+        # show_bonsaiplant_details
     end
 
-    def show_bonsaiplant_for(bonsaiplant)
-        bonsaiplant = @bonsaiplants[bonsaiplant -1]
-        bonsaiplant.get_bonsaiplant_for
-        puts "Here are the bonsai details you are looking for:"
+   
+
+    # def show_bonsaiplant_for(bonsaiplant)
+    #     # binding.pry
+    #     bonsaiplant = @bonsaiplants[bonsaiplant -1]
+    #     bonsaiplant.get_bonsaiplant_for
+    #     puts "Here are the bonsai details you are looking for:"
         
-        bonsaiplant.bonsaiplant_for do |bonsaiplant_for|
-            puts "#{bonsaiplant_for.title} #{bonsaiplant_for.price} #{bonsaiplant_for.description}"
-        end
-    end
+    #     bonsaiplant.bonsaiplant_for do |bonsaiplant_for|
+    #         puts "#{bonsaiplant_for.title} #{bonsaiplant_for.price} #{bonsaiplant_for.description}"
+    #     end
+    # end
 end

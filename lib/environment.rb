@@ -3,7 +3,7 @@ require_relative "../lib/bonsaishop/cli.rb"
 require_relative "../lib/bonsaishop/scraper.rb"
 require_relative "../lib/bonsaishop/bonsai.rb"
 require_relative "../lib/bonsaishop/bonsaiplant.rb"
-require_relative "../lib/bonsaishop/bonsaiplant_for.rb"
+
 
 require 'nokogiri'
 require 'pry'

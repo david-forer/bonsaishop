@@ -1,18 +1,17 @@
 class Bonsaishop::Bonsaiplant
-    attr_accessor :price, :title, :tree_url, :description
+    attr_accessor :price, :title, :tree_url, :description, :category
 
     @@all = []
 
-    def initialize(title, price, tree_url, bonsai) 
+    def initialize(title, price, tree_url, category ) 
         @title = title
         @price = price
-        @description = description
         @tree_url = tree_url
-        @bonsai = bonsai
-        @bonsaiplant_for = []
+        # @description = description
+        @category = category
 
-        add_to_bonsai
-        # get_bonsaiplant_for
+        add_to_bonsai(category)
+        # get_bonsaiplant_for(description)
         save
     end
 
@@ -21,11 +20,11 @@ class Bonsaishop::Bonsaiplant
         @@all
     end
 
-    def add_to_bonsai
-        @bonsai.bonsaiplants << self unless @bonsai.bonsaiplants.include?(self)
+    def add_to_bonsai(category)
+        category.bonsaiplants << self unless category.bonsaiplants.include?(self)
     end
 
-    def get_bonsaiplant_for 
+    def get_bonsaiplant_for(description) 
         Bonsaishop::Scraper.scrape_bonsaiplant_for(self) if @bonsaiplant_for.empty?
     
     end

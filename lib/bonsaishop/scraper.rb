@@ -14,8 +14,8 @@ class Bonsaishop::Scraper
  
     end
 
-    def self.scrape_bonsaiplants(bonsai)
-        url = "https://www.bonsaioutlet.com#{bonsai.url}"
+    def self.scrape_bonsaiplants(category)
+        url = "https://www.bonsaioutlet.com#{category.url}"
         doc = Nokogiri::HTML(open(url))
 
         trees = doc.css("article.card")
@@ -23,26 +23,29 @@ class Bonsaishop::Scraper
             title = t.css("h4.card-title").text.strip
             price = t.css("div.card-text").text.strip
             tree_url = t.css("div.yotpo.bottomLine")[0].attributes['data-url'].text
-            Bonsaishop::Bonsaiplant.new(title, price, tree_url, bonsai)
+            Bonsaishop::Bonsaiplant.new(title, price, tree_url, category)
         end
       
        
     end
 
-    def self.scrape_bonsaiplant_for(bonsaiplant)
+    def self.scrape_description_for(bonsaiplant)
     
-        url = "https://www.bonsaioutlet.com#{bonsaiplant.tree_url}"
+        url = bonsaiplant.tree_url
         doc = Nokogiri::HTML(open(url))
 
-        details = doc.css("div.productDtlPage")
+       description = doc.css("div.productDtlPage div.tab-content p").text.strip
+        # binding.pry
 
-        details.each do |final|
-            title = final.css("h1.productView-title").text.strip
-            price = final.css("span.price.price--withoutTax").text.strip
-            description = final.css("div.tab-content p").text.strip
-            # reviews = final.css("span.sr-only").text.strip
-            Bonsaishop::Bonsaiplant_for.new(title, price, description)
-        end
+
+        # puts description
+        # description.each do |final|
+        #     # title = final.css("h1.productView-title").text.strip
+        #     # price = final.css("span.price.price--withoutTax").text.strip
+        #     description = final.css("div.tab-content p").text.strip
+        #     # reviews = final.css("span.sr-only").text.strip
+        #     # Bonsaishop::Bonsaiplant.new(description)
+        # end
 
     end
 
