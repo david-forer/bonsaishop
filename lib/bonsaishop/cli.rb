@@ -50,9 +50,11 @@ class Bonsaishop::CLI
     def get_user_bonsai_tree(bonsai)
         puts "Please choose a tree(number) to see more details."
         input = gets.strip.strip.to_i
-        # bonsaiplant = bonsai.bonsaiplants[input.to_i - 1]
+        # binding.pry
+        #bonsaiplant = Bonsaishop::Bonsaiplant.all
+        bonsaiplant = bonsai.bonsaiplants[input.to_i - 1]
         # bonsaiplant.get_bonsaiplant_for
-        binding.pry
+        # binding.pry
         show_bonsaiplant_for(bonsaiplant)
     end
 

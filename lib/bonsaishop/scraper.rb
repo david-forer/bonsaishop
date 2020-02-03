@@ -31,7 +31,7 @@ class Bonsaishop::Scraper
 
     def self.scrape_bonsaiplant_for(bonsaiplant)
     
-        url = "#{bonsaiplant.tree_url}"
+        url = "https://www.bonsaioutlet.com#{bonsaiplant.tree_url}"
         doc = Nokogiri::HTML(open(url))
 
         details = doc.css("div.productDtlPage")
