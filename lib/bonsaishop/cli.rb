@@ -43,6 +43,7 @@ class Bonsaishop::CLI
         bonsai.bonsaiplants.each.with_index(1) do |bonsaiplant, int|
             puts "#{int}. #{bonsaiplant.title} "
         end
+        puts "\n_________________________________________________\n"
         get_user_bonsai_tree(bonsai)
         
     end
@@ -58,10 +59,39 @@ class Bonsaishop::CLI
         Bonsaishop::Scraper.scrape_description_for(bonsaiplant)
 
         puts "Here are the bonsai details for #{bonsaiplant.title}:"
+
+        puts "Price: #{bonsaiplant.price}"
+        puts "Show url: #{bonsaiplant.tree_url}"
+        puts "Category: #{bonsaiplant.category}"
+        puts "Description: #{bonsaiplant.description}"
+
+         puts "\n________________________________________\n"
         #  binding.pry
-        # show_bonsaiplant_details
+        next_menu
     end
 
+        def next_menu
+            puts "Would you like to look at another tree? Type: 'tree'"
+
+            puts "Or maybe start over with another category? Type: 'start'"
+
+            puts "I would like to exit! Type: 'exit'"
+
+            input = gets.strip.downcase
+
+            if input == "tree"
+                list_bonsais
+                get_user_bonsai
+            elsif input == "start"
+                get_bonsai_plants
+            elsif input == "exit"
+                puts "Goodbye Friend!"
+            else
+                puts "Sorry I didn't understand what you typed, try again please"
+                     next_menu      
+            end
+        end
+    
     # def show_bonsaiplant_details(bonsaiplant)
 
     #     puts "Here are the bonsai details you are looking for:"
