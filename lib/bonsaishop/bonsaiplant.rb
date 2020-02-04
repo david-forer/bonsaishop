@@ -3,11 +3,11 @@ class Bonsaishop::Bonsaiplant
 
     @@all = []
 
-    def initialize(title, price, tree_url, category ) 
+     def initialize(title, price, tree_url, category ) 
         @title = title
         @price = price
         @tree_url = tree_url
-        # @description = description
+        @description = description
         @category = category
 
         add_to_bonsai(category)

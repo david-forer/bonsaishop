@@ -83,7 +83,7 @@ class Bonsaishop::CLI
                 list_bonsais
                 get_user_bonsai
             elsif input == "start"
-                get_bonsai_plants
+                start
             elsif input == "exit"
                 puts "Goodbye Friend!"
             else
