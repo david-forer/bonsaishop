@@ -35,17 +35,8 @@ class Bonsaishop::Scraper
         doc = Nokogiri::HTML(open(url))
 
        description = doc.css("div.productDtlPage div.tab-content p").text.strip
-        binding.pry
 
-        Bonsaishop::Bonsaiplant.new(description)
-        # puts description
-        # description.each do |final|
-        #     # title = final.css("h1.productView-title").text.strip
-        #     # price = final.css("span.price.price--withoutTax").text.strip
-        #     description = final.css("div.tab-content p").text.strip
-        #     # reviews = final.css("span.sr-only").text.strip
-        #     # Bonsaishop::Bonsaiplant.new(description)
-        # end
+       bonsaiplant.description = description
 
     end
 

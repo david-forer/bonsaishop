@@ -9,9 +9,10 @@ class Bonsaishop::Bonsaiplant
         @tree_url = tree_url
         @description = description
         @category = category
+        # @description = []
 
         add_to_bonsai(category)
-        # get_bonsaiplant_for(description)
+            # get_bonsaiplant_for(description)
         save
     end
 

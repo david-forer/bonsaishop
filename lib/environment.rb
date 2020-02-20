@@ -8,6 +8,8 @@ require_relative "../lib/bonsaishop/bonsaiplant.rb"
 require 'nokogiri'
 require 'pry'
 require 'open-uri'
+require 'colorize'
+require 'rainbow'
 
 module Bonsaishop
   class Error < StandardError; end

@@ -58,12 +58,13 @@ class Bonsaishop::CLI
         # binding.pry
         Bonsaishop::Scraper.scrape_description_for(bonsaiplant)
 
-        puts "Here are the bonsai details for #{bonsaiplant.title}:"
-
-        puts "Price: #{bonsaiplant.price}"
-        puts "Show url: #{bonsaiplant.tree_url}"
-        puts "Category: #{bonsaiplant.category}"
-        puts "Description: #{bonsaiplant.description}"
+        puts "Here are the bonsai details for:" + Rainbow(" #{bonsaiplant.title}").indianred
+            puts " "
+        puts Rainbow("Price:").red + (" #{bonsaiplant.price}").blue
+        puts Rainbow("Show url:").red + (" #{bonsaiplant.tree_url}").green
+        # puts "Category: #{bonsaiplant.category}"
+            puts " "
+        puts Rainbow("Description:").red + " #{bonsaiplant.description}"
 
          puts "\n________________________________________\n"
         #  binding.pry
@@ -71,9 +72,10 @@ class Bonsaishop::CLI
     end
 
         def next_menu
-            puts "Would you like to look at another tree? Type: 'tree'"
+            puts " "
+            puts "Would you like to look at more trees? Type: 'tree'"
 
-            puts "Or maybe start over with another category? Type: 'start'"
+            # puts "Or maybe start over with another category? Type: 'start'"
 
             puts "I would like to exit! Type: 'exit'"
 
